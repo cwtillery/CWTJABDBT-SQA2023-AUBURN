@@ -25,8 +25,8 @@ def getYAMLFiles(path_to_dir):
                valid_.append(full_p_file)
                
 
-     logNum0.debug('{}*{}'.format('Project', 'getYAMLFiles logging, Files successfully obtained')) 
-     logNum0.info('getYAMLFiles logging, Files successfully obtained') 
+    logNum0.debug('{}*{}'.format('Project', 'getYAMLFiles logging, Files successfully obtained')) 
+    logNum0.info('getYAMLFiles logging, Files successfully obtained') 
      
     return valid_ 
 
