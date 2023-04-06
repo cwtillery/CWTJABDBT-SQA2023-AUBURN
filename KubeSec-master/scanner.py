@@ -9,6 +9,7 @@ import graphtaint
 import os 
 import pandas as pd 
 import numpy as np 
+import logger
 
 def getYAMLFiles(path_to_dir):
     valid_  = [] 
@@ -18,36 +19,73 @@ def getYAMLFiles(path_to_dir):
            if(os.path.exists(full_p_file)):
              if (full_p_file.endswith( constants.YML_EXTENSION  )  or full_p_file.endswith( constants.YAML_EXTENSION  )  ):
                valid_.append(full_p_file)
+               
+     #log getYAMLFiles method for model poisioning prevention
+     logNum0 = logger.giveMeLoggingObject()
+     logNum0.debug('{}*{}'.format('Project', 'getYAMLFiles logging, Files successfully obtained')) 
+     
     return valid_ 
 
 def isValidUserName(uName): 
     valid = True
     if (isinstance( uName , str)  ): 
         if( any(z_ in uName for z_ in constants.FORBIDDEN_USER_NAMES )   ): 
+        
+            #log isValidUserName method for model tricking prevention
+            logNum1 = logger.giveMeLoggingObject()
+            logNum1.debug('{}*{}'.format('Project', 'isValidUserName logging, User name is not valid')) 
+            
             valid = False   
         else: 
+        
+            #log isValidUserName method for model tricking prevention
+            logNum2 = logger.giveMeLoggingObject()
+            logNum2.debug('{}*{}'.format('Project', 'isValidUserName logging, User name is valid')) 
+        
             valid = True    
     else: 
         valid = False   
+        
+    
     return valid
 
 def isValidPasswordName(pName): 
     valid = True
     if (isinstance( pName , str)  ): 
         if( any(z_ in pName for z_ in constants.FORBIDDEN_PASS_NAMES) )  : 
+        
+            #log isValidPassword method for model tricking prevention
+            logNum3 = logger.giveMeLoggingObject()
+            logNum3.debug('{}*{}'.format('Project', 'isValidPassword logging, Password is not valid'))  
+            
             valid = False  
         else: 
+            #log isValidPassword method for model tricking prevention
+            logNum4 = logger.giveMeLoggingObject()
+            logNum4.debug('{}*{}'.format('Project', 'isValidPassword logging, Password is valid'))  
+        
             valid = True    
     else: 
-        valid = False               
+        valid = False        
+        
     return valid
 
 def isValidKey(keyName): 
     valid = False 
     if ( isinstance( keyName, str )  ):
         if( any(z_ in keyName for z_ in constants.LEGIT_KEY_NAMES ) ) : 
+        
+            #log isValidKey method for model tricking prevention
+            logNum5 = logger.giveMeLoggingObject()
+            logNum5.debug('{}*{}'.format('Project', 'isValidKey logging, Key is valid')) 
+            
             valid = True   
         else: 
+        
+            #log isValidKey method for model tricking prevention
+            logNum6 = logger.giveMeLoggingObject()
+            logNum6.debug('{}*{}'.format('Project', 'isValidKey logging, Key is not valid')) 
+            
             valid = False     
     else: 
         valid = False                      
@@ -60,11 +98,24 @@ def checkIfValidSecret(single_config_val):
         single_config_val = single_config_val.lower()
         config_val = single_config_val.strip() 
         if ( any(x_ in config_val for x_ in constants.INVALID_SECRET_CONFIG_VALUES ) ):
+            
+            #log checkIfValidSecret for model tricking prevention
+            logNum7 = logger.giveMeLoggingObject()
+            logNum7.debug('{}*{}'.format('Project', 'checkIfValidSecret logging, secret is not valid')) 
+        
             flag2Ret = False 
         else:
             if(  len(config_val) > 2 )  :
+                #log checkIfValidSecret for model tricking prevention
+                logNum8 = logger.giveMeLoggingObject()
+                logNum8.debug('{}*{}'.format('Project', 'checkIfValidSecret logging, secret is valid')) 
+            
                 flag2Ret = True 
     else: 
+        #log checkIfValidSecret for model tricking prevention
+        logNum9 = logger.giveMeLoggingObject()
+        logNum9.debug('{}*{}'.format('Project', 'checkIfValidSecret logging, secret is not valid')) 
+        
         flag2Ret = False 
     return flag2Ret
 
