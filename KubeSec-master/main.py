@@ -51,8 +51,8 @@ if __name__ == '__main__':
     '''
     DO NOT DELETE ALL IN K8S_REPOS AS TAINT TRACKING RELIES ON BASH SCRIPTS, ONE OF THE STRENGTHS OF THE TOOL 
     '''
-    # ORG_DIR         = '/Users/arahman/K8S_REPOS/GITHUB_REPOS/'
-    # OUTPUT_FILE_CSV = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Research/Kubernetes/StaticTaint/data/V16_GITHUB_OUTPUT.csv'
+    ORG_DIR         = '/Users/alexbarras/Documents/Year 4/COMP 5710 Software QA/Project/CWTJABDBT-SQA2023-AUBURN-main/KubeSec-master'
+    OUTPUT_FILE_CSV = '/Users/alexbarras/Documents/Year 4/COMP 5710 Software QA/Project/CWTJABDBT-SQA2023-AUBURN-main/V16_GITHUB_OUTPUT.csv'
 
     # ORG_DIR         = '/Users/arahman/K8S_REPOS/GITLAB_REPOS/'
     # OUTPUT_FILE_CSV = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Research/Kubernetes/StaticTaint/data/V16_GITLAB_OUTPUT.csv'
