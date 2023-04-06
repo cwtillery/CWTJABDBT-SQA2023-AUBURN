@@ -1,5 +1,5 @@
 # CWTJABDBT-SQA2023-AUBURN
-SQA Project
+SQA Project | Spring 2023
 
 Team Name: CWTJABDBT
 
