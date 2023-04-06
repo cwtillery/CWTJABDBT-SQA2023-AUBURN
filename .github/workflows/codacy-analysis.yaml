@@ -1,6 +1,7 @@
 name: Codacy Security Scan
 
 on: ["push"]
+    
 
 jobs:
   codacy-security-scan:
@@ -13,16 +14,26 @@ jobs:
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master
         with:
-          output: results.csv
-          format: csv
+          output: results.sarif
+          format: sarif
           # Adjust severity of non-security issues
           gh-code-scanning-compat: true
-          # Force 0 exit code to allow CSV file generation
+          # Force 0 exit code to allow SARIF file generation
           # This will hand over control about PR rejection to the GitHub side
           max-allowed-issues: 2147483647
-          
-      # Upload the CSV file generated in the previous step
-      - name: Upload CSV results file
-        uses: github/codeql-action/upload-csv@main
+      
+      # Upload the SARIF file generated in the previous step
+      - name: Upload SARIF results file
+        uses: github/codeql-action/upload-sarif@main
         with:
-          csv_file: results.csv
+          sarif_file: results.sarif
+          
+      - name: SARIF-to-CSV
+        # You may pin to the exact commit or the version.
+        # uses: mr-sherman/sarif-to-csv@289fc49805229df60a484a03bbb894ef4ea829db
+        uses: mr-sherman/sarif-to-csv@v2.1
+        with:
+          # sarif-formatted input file
+          input-file: results.sarif
+          # CSV-formatted output file
+          output-file: results.csv
