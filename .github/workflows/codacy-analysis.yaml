@@ -1,10 +1,10 @@
-name: Codacy Analysis CLI
+name: Codacy Security Scan
 
 on: ["push"]
 
 jobs:
-  codacy-analysis-cli:
-    name: Codacy Analysis CLI
+  codacy-security-scan:
+    name: Codacy Security Scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -12,3 +12,17 @@ jobs:
 
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master
+        with:
+          output: results.csv
+          format: csv
+          # Adjust severity of non-security issues
+          gh-code-scanning-compat: true
+          # Force 0 exit code to allow CSV file generation
+          # This will hand over control about PR rejection to the GitHub side
+          max-allowed-issues: 2147483647
+          
+      # Upload the CSV file generated in the previous step
+      - name: Upload CSV results file
+        uses: github/codeql-action/upload-csv@main
+        with:
+          csv_file: results.csv
