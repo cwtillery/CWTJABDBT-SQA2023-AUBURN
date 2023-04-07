@@ -7,7 +7,7 @@ input1 = [2, 'Hello World!', [7]]
 
 for i in range(len(input1)):
   try:
-    res = g.getYAMLFiles(input1(i))
+    res = g.getYAMLFiles(input1[i])
     print(res)
   except Exception as e: print(str(e))
 
@@ -17,7 +17,7 @@ input2 = [(1, "two", 3), None, "string"]
 
 for i in range(len(input2)):
   try:
-    res = g.constructHelmString(input2(i))
+    res = g.constructHelmString(input2[i])
     print(res)
   except Exception as e: print(str(e))
 
@@ -26,7 +26,7 @@ input3 = ['random/directory', None, (7, 2)]
 
 for i in range(len(input3)):
   try:
-    res = g.getHelmTemplateContent(input3(i))
+    res = g.getHelmTemplateContent(input3[i])
     print(res)
   except Exception as e: print(str(e))
 
@@ -36,7 +36,7 @@ input4_2 = [("tu", "ple"), "🐵 🙈 🙉 🙊", None]
 
 for i in range(len(input4)):
   try:
-    res = g.getMatchingTemplates(input4(i), input4_5(i))
+    res = g.getMatchingTemplates(input4[i], input4_5[i])
     print(res)
   except Exception as e: print(str(e))
 
@@ -45,6 +45,6 @@ input5 = ["Not a List", ['invalid list', 2], None]
 
 for i in range(len(input5)):
   try:
-    res = g.getValidTaints(input5(i))
+    res = g.getValidTaints(input5[i])
     print(res)
   except Exception as e: print(str(e))
