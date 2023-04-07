@@ -52,7 +52,7 @@ input4_2 = [("tu", "ple"), "🐵 🙈 🙉 🙊", None]
 
 for i in range(len(input4)):
   try:
-    res = g.getMatchingTemplates(input4[i], input4_5[i])
+    res = g.getMatchingTemplates(input4[i], input4_2[i])
     print(res)
   except Exception as e: print(str(e))
 
