@@ -1,4 +1,4 @@
-import graphtaint.py as g
+import graphtaint as g
 
 # Fuzz.py performs fuzzing on 5 methods contained in the graphtaint.py file
 
